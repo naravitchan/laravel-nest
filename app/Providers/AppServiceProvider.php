@@ -14,6 +14,6 @@ class AppServiceProvider extends ServiceProvider
     {
         \Log::info('- register -');
         // Bind the NestJsService to the container
-        $this->app->singleton(\App\Services\NestJsService::class);
+        // $this->app->singleton(\App\Services\NestJsService::class);
     }
 }

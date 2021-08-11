@@ -131,6 +131,7 @@ return [
           'password' => env('REDIS_PASSWORD', null),
           'port' => env('REDIS_PORT', 6379),
           'database' => env('REDIS_DB', 0),
+          'read_write_timeout' => 0
         ],
         // Make a copy of the "default" array directly above
         // & rename it "pubsub" as shown directly below.
@@ -140,6 +141,7 @@ return [
           'password' => env('REDIS_PASSWORD', null),
           'port' => env('REDIS_PORT', 6379),
           'database' => env('REDIS_DB', 0),
+          'read_write_timeout' => 0
         ],
         'cache' => [
           'url' => env('REDIS_URL'),

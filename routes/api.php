@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Services\NestCustomService;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/greeting', function (Request $request, NestJsService $nestService) {
+Route::post('/greeting', function (Request $request) {
     $name = $request->get('name');
-    $nestResponse = $nestService->send(['cmd' => 'greeting'], $name);
+    \Log::info($name);
+    $nestService = new NestCustomService;
+    $nestResponse = $nestService->send('greeting', $name);
     return $nestResponse->first();
 });
 
-Route::get('/observable', function (NestJsService $nestService) {
-    $nestResponse = $nestService->send(['cmd' => 'observable']);
-    return $nestResponse->sum();
-});
+// Route::get('/observable', function (NestJsService $nestService) {
+//     $nestResponse = $nestService->send(['cmd' => 'observable']);
+//     return $nestResponse->sum();
+// });
